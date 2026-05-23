@@ -1,0 +1,135 @@
+{
+	"info": {
+		"name": "Godss Tourism API",
+		"description": "Коллекция запросов для тестирования API туристической ИС",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"admin\", \"password\": \"admin123\"}"
+						},
+						"url": {"raw": "{{base_url}}/user/login", "host": ["{{base_url}}", "user", "login"]}
+					}
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"newuser\", \"password\": \"pass123\", \"email\": \"new@test.ru\"}"
+						},
+						"url": {"raw": "{{base_url}}/user/add", "host": ["{{base_url}}", "user", "add"]}
+					}
+				}
+			]
+		},
+		{
+			"name": "Scenic Spots",
+			"item": [
+				{
+					"name": "Get scenic page",
+					"request": {
+						"method": "GET",
+						"url": {"raw": "{{base_url}}/scenic/page?page=1&size=10", "host": ["{{base_url}}"]}
+					}
+				},
+				{
+					"name": "Get scenic by ID",
+					"request": {
+						"method": "GET",
+						"url": {"raw": "{{base_url}}/scenic/1", "host": ["{{base_url}}"]}
+					}
+				},
+				{
+					"name": "Add scenic (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Тестовая достопримечательность\", \"description\": \"Описание\", \"categoryId\": 1}"
+						},
+						"url": {"raw": "{{base_url}}/scenic/add", "host": ["{{base_url}}"]}
+					}
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get category tree",
+					"request": {
+						"method": "GET",
+						"url": {"raw": "{{base_url}}/scenic-category/tree", "host": ["{{base_url}}"]}
+					}
+				}
+			]
+		},
+		{
+			"name": "Tickets & Orders",
+			"item": [
+				{
+					"name": "Get tickets by scenic",
+					"request": {
+						"method": "GET",
+						"url": {"raw": "{{base_url}}/ticket/scenic/1", "host": ["{{base_url}}"]}
+					}
+				},
+				{
+					"name": "Create order",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"ticketId\": 1, \"quantity\": 2, \"scenicId\": 1}"
+						},
+						"url": {"raw": "{{base_url}}/order", "host": ["{{base_url}}"]}
+					}
+				}
+			]
+		},
+		{
+			"name": "Guides",
+			"item": [
+				{
+					"name": "Get guides page",
+					"request": {
+						"method": "GET",
+						"url": {"raw": "{{base_url}}/guide/page?page=1&size=10", "host": ["{{base_url}}"]}
+					}
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get comments page",
+					"request": {
+						"method": "GET",
+						"url": {"raw": "{{base_url}}/comment/page?page=1&size=10", "host": ["{{base_url}}"]}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:1236/api"
+		}
+	]
+}
